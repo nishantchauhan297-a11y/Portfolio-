@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio with projects, skills and contact information.">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* Apply saved theme before paint to avoid a flash */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a href="#home" class="brand" id="brandName">Portfolio</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#chatbot">AI Chatbot</a></li>
+      </ul>
+      <button class="theme-btn" id="themeBtn" aria-label="Switch to dark mode" title="Toggle light/dark mode">
+        <span id="themeIcon" aria-hidden="true">&#9790;</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Hello, I'm</p>
+          <h1 id="heroName">Your Name</h1>
+          <p class="role" id="heroRole"></p>
+          <p class="tagline" id="heroTagline"></p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View My Projects</a>
+            <a class="btn" id="heroGithub" href="#contact" target="_blank" rel="noopener">GitHub Profile</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img id="profileImg" alt="Profile photograph" width="280" height="280">
+          <div id="avatarFallback" class="avatar-fallback" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-grid">
+          <div>
+            <p id="aboutIntro"></p>
+            <p class="muted" id="aboutLocation"></p>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <ul class="timeline" id="educationList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section alt">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul class="chips" id="skillList"></ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>My Projects</h2>
+        <div class="toolbar">
+          <label class="search" for="searchInput">
+            <span class="sr-only">Search projects by name or technology</span>
+            <input id="searchInput" type="search" placeholder="Search by name or technology (e.g. Python, Quiz, Book)" autocomplete="off">
+          </label>
+          <div class="filters" id="filterBar" role="group" aria-label="Filter by technology"></div>
+        </div>
+        <p class="result-count" id="resultCount" role="status" aria-live="polite"></p>
+        <div class="cards" id="projectGrid"></div>
+        <p class="no-results" id="noResults" hidden>
+          No projects match your search. Try "Python", "Quiz" or "Book".
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2>Contact Information</h2>
+        <ul class="contact-list" id="contactList"></ul>
+      </div>
+    </section>
+
+    <!-- AI CHATBOT -->
+    <section id="chatbot" class="section">
+      <div class="container">
+        <h2>AI Chatbot</h2>
+        <p class="muted">Ask me about my skills, projects or background. Answers come from the information on this portfolio.</p>
+        <div class="chat" id="chat">
+          <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="Chat messages"></div>
+          <div class="chat-suggestions" id="chatSuggestions" aria-label="Suggested questions"></div>
+          <form class="chat-form" id="chatForm" autocomplete="off">
+            <label class="sr-only" for="chatInput">Type your question</label>
+            <input id="chatInput" type="text" maxlength="500" placeholder="Type a question, e.g. What projects have you completed?" required>
+            <button class="btn primary" id="chatSend" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><p id="footerText"></p></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>
