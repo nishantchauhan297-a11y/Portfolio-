@@ -2,7 +2,7 @@
 
 A responsive personal portfolio website with project search, light/dark mode and an AI chatbot that answers questions about my skills and projects.
 
-**Live website:** ADD YOUR VERCEL LINK HERE (e.g. `https://portfolio-xxxx.vercel.app`)
+**Live website:** ADD YOUR VERCEL LINK HERE https://portfolio-two-liart-22.vercel.app/
 
 ## About
 
